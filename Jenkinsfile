@@ -7,15 +7,8 @@ pipeline {
 
     stages {
 
-        stage('SonarQube'){
-            steps{
-                dir("/var/lib/jenkins/workspace/frontend/frontend"){
-                    withSonarQubeEnv('sonarcloud_frontend_gabriel'){
-                        sh 'chmod +x ./gradlew'
-                        sh './gradlew sonarqube'
-                    }
-                }
-            }
+        stage('Test'){
+            echo 'Test...'
         }
     }
 }
