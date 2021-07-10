@@ -7,27 +7,70 @@ class Inicio extends Component {
   constructor() {
     super();
     this.state = {
-      archivo: null,
-    };
+      file: null,
+    }
+    this.onFormSubmit = this.onFormSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.fileUpload = this.fileUpload.bind(this)
   }
+
+  onFormSubmit = (e) => {
+    e.preventDefault() // Stop form submit
+    this.fileUpload(this.state.file).then((response)=>{
+      console.log(response.data);
+    })
+  }
+
+  onChange = (e) => {
+    this.setState({file:e.target.files[0]})
+  }
+
+  fileUpload = (file) =>{
+    const url = 'http://localhost:1818/files';
+    const formData = new FormData();
+    formData.append('file',file)
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }
+    .post(url, formData,config)
+  }
+
   setArchivo = (e) => {
     const { value } = e.target;
     this.setState({
-      archivo: value,
+      file: value,
     });
   };
 
   subirArchivo =(e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:1818/files", this.state.archivo)
-      .then((response) => {
+    /*e.preventDefault();
+    var bodyFormData = new FormData();
+    bodyFormData.append('file', this.state.file);
+    axios({
+      method: "post",
+      url: "http://localhost:1818/files",
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        //handle success
         console.log(response);
       })
-      .catch((err) => console.log(err));
-  }
-  
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+*/  
+    const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+    let fd = new FormData();
+    fd.append('file',this.state.file[0])
+    axios.post("http://localhost:1818/files", fd, config)
 
+
+  };
+  
   render() {
     return (
       <div>
@@ -243,22 +286,25 @@ class Inicio extends Component {
             <br></br>
           </Tab>
 
-          <Tab eventKey="Contacto" title="Contacto">
+          <Tab eventKey="Postulación" title="Postulación">
           <br></br>
             <p>
               Envíe sus datos y los documentos solicitados para generar una
               postulación
             </p>
             <br></br>
-
-            <form onSubmit={this.sendArchivo}>
-              <table>
-                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-                <tr><td></td><td><input type="submit" value="Upload" onChange={this.setArchivo}/></td></tr>
-              </table>
-            </form>
-              <br></br>
-              <br></br>
+            <Form onSubmit={this.onFormSubmit}>
+                <Form.Group>
+                    <input  type="file" name ="file" onChange={this.onChange}/>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+                <br></br><br></br>
+              </Form>
+            
+            <br></br>
+            <br></br>
           </Tab>
         </Tabs>
       </div>

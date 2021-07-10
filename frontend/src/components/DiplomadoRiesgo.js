@@ -281,7 +281,7 @@ class Inicio extends Component {
             <Correo />
             <br></br>
           </Tab>
-          <Tab eventKey="Contacto" title="Contacto">
+          <Tab eventKey="Postulación" title="Postulación">
             Envíe sus datos y los documentos solicitados para generar una
             postulación
             <br></br>

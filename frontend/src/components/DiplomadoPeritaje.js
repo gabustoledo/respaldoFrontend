@@ -194,40 +194,20 @@ class Inicio extends Component {
                 <Correo />
                 <br></br>
                 </Tab>
-                <Tab eventKey="Contacto" title="Contacto">
+                <Tab eventKey="Postulación" title="Postulación">
                 <br></br>
                 Envíe sus datos y los documentos solicitados para generar una postulación
                 <br></br>
-                <Form>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Nombre </Form.Label>
-                            <Form.Control type="nombre" placeholder="Pepe Rodriguez" />
-                        </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email </Form.Label>
-                            <Form.Control type="email" placeholder="nombre@ejemplo.com" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.File id="tituloPregrado" label="Titulo Pregrado" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.File id="certificadoNacimiento" label="Certificado de Nacimiento" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.File id="cedulaIdentidad" label="Copia cédula de Identidad" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.File id="curriculum" label="Curriculum Vitae" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.File id="ficha" label="Ficha de inscripción" />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                        Submit
-                        </Button>
-                        <br></br><br></br>
-                </Form>
-
+                <h4>Documentos requeridos</h4>
+                    <ul>
+                    <li>Título profesional o Certificado de Egreso (original entregado por la institución de educación superior o fotocopia legalizada ante notario).</li>
+                    <li>Certificado de nacimiento.</li>
+                    <li>Copia de Cédula de identidad (escaneado por ambos lados).</li>
+                    <li>Currículum Vitae.</li>
+                    <li>Ficha de inscripción.</li>
+                    </ul>
+                
+                <Button href="http://localhost:1818/files">Envio de documentos </Button>
                 </Tab>
                 
 
