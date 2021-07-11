@@ -17,6 +17,7 @@ import Postulaciones from './components/Postulaciones'
 import Aceptadas from './components/Aceptadas'
 import Rechazadas from './components/Rechazadas.js'
 import Correo from './components/Correo.js'
+import PostulacionEnviada from './components/PostulacionEnviada.js'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/Aceptadas" component={Aceptadas} />
                 <Route path="/Rechazadas" component={Rechazadas} />
                 <Route path="/Correo" component={Correo} />
+                <Route path="/PostulacionEnviada" component={PostulacionEnviada} />
             </div>
             <br></br><br></br>
             
