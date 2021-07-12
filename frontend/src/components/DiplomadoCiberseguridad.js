@@ -1,76 +1,13 @@
 import React, { Component } from "react";
-import { Jumbotron, Container, Tab, Tabs, Form, Button } from "react-bootstrap";
+import { Jumbotron, Container, Tab, Tabs, Button } from "react-bootstrap";
 import Correo from "./Correo.js";
-import axios from "axios";
 
 class Inicio extends Component {
   constructor() {
     super();
-    this.state = {
-      file: null,
-    }
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.fileUpload = this.fileUpload.bind(this)
+    this.state = {};
   }
 
-  onFormSubmit = (e) => {
-    e.preventDefault() // Stop form submit
-    this.fileUpload(this.state.file).then((response)=>{
-      console.log(response.data);
-    })
-  }
-
-  onChange = (e) => {
-    this.setState({file:e.target.files[0]})
-  }
-
-  fileUpload = (file) =>{
-    const url = 'http://localhost:1818/files';
-    const formData = new FormData();
-    formData.append('file',file)
-    const config = {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-    }
-    .post(url, formData,config)
-  }
-
-  setArchivo = (e) => {
-    const { value } = e.target;
-    this.setState({
-      file: value,
-    });
-  };
-
-  subirArchivo =(e) => {
-    /*e.preventDefault();
-    var bodyFormData = new FormData();
-    bodyFormData.append('file', this.state.file);
-    axios({
-      method: "post",
-      url: "http://localhost:1818/files",
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-      .then(function (response) {
-        //handle success
-        console.log(response);
-      })
-      .catch(function (response) {
-        //handle error
-        console.log(response);
-      });
-*/  
-    const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-    let fd = new FormData();
-    fd.append('file',this.state.file[0])
-    axios.post("http://localhost:1818/files", fd, config)
-
-
-  };
-  
   render() {
     return (
       <div>
@@ -121,7 +58,7 @@ class Inicio extends Component {
             </ul>
           </Tab>
           <Tab eventKey="Plan de Estudios" title="Plan de Estudios">
-          <br></br>
+            <br></br>
             <h4>Número de cursos y&nbsp;duración</h4>
             <ul>
               <li>El diplomado está estructurado en 7 cursos y 105 horas.</li>
@@ -157,7 +94,7 @@ class Inicio extends Component {
           </Tab>
           <Tab eventKey="Cuerpo Docente" title="Cuerpo Docente">
             <div class="tab-pane single active" id="8323">
-            <br></br>
+              <br></br>
               <h4>Cuerpo docente</h4>
               <p>
                 El cuerpo docente se compone de ingenieros de alto nivel
@@ -200,7 +137,7 @@ class Inicio extends Component {
           </Tab>
           <Tab eventKey="Aranceles" title="Aranceles">
             <div class="tab-pane single active" id="8325">
-            <br></br>
+              <br></br>
               <h4>Aranceles</h4>
               <ul>
                 <li>
@@ -240,7 +177,7 @@ class Inicio extends Component {
           </Tab>
           <Tab eventKey="Admisión" title="Admisión">
             <div class="tab-pane single active" id="8327">
-            <br></br>
+              <br></br>
               <h4>Dirigido a</h4>
               <ul>
                 <li>
@@ -287,24 +224,25 @@ class Inicio extends Component {
           </Tab>
 
           <Tab eventKey="Postulación" title="Postulación">
-          <br></br>
-            <p>
-              Envíe sus datos y los documentos solicitados para generar una
-              postulación
-            </p>
             <br></br>
-            <Form onSubmit={this.onFormSubmit}>
-                <Form.Group>
-                    <input  type="file" name ="file" onChange={this.onChange}/>
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-                <br></br><br></br>
-              </Form>
-            
+            Envíe sus datos y los documentos solicitados para generar una
+            postulación
             <br></br>
-            <br></br>
+            <h4>Documentos requeridos</h4>
+            <ul>
+              <li>
+                Título profesional o Certificado de Egreso (original entregado
+                por la institución de educación superior o fotocopia legalizada
+                ante notario).
+              </li>
+              <li>Certificado de nacimiento.</li>
+              <li>Copia de Cédula de identidad (escaneado por ambos lados).</li>
+              <li>Currículum Vitae.</li>
+              <li>Ficha de inscripción.</li>
+            </ul>
+            <Button href="http://localhost:1818/postulacion">
+              Envio de documentos
+            </Button>
           </Tab>
         </Tabs>
       </div>

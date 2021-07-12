@@ -42,6 +42,7 @@ function App() {
                 <Route path="/Rechazadas" component={Rechazadas} />
                 <Route path="/Correo" component={Correo} />
                 <Route path="/PostulacionEnviada" component={PostulacionEnviada} />
+
             </div>
             <br></br><br></br>
             

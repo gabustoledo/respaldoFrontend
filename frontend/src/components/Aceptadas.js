@@ -11,12 +11,9 @@ class Aceptadas extends Component {
   render() {
     return (
       <div>
-        <br/>
-            
-            <h1> Postulaciones Aceptadas</h1>
-        
-        
+        <br />
 
+        <h1> Postulaciones Aceptadas</h1>
       </div>
     );
   }
